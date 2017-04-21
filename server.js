@@ -7,7 +7,7 @@ function onRequest(request, response){
 	var json = JSON.stringify({ 
 		mijntekst: 'Hello World!',
 		label: "Nog meer tekst",
-		mijnarray: [ "tekst", "nog meer tekst", 2, 2.3 ],
+		mijnarray: [ "tekst", "nog meer tekst", 2 ],
 		mijnobject: {
 			mijnlabel: 'mijntekst',
 			getal: 4
