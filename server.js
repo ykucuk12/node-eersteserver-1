@@ -1,23 +1,15 @@
 var http = require('http');
+var express = require('express');
+var routes_v1 = require('./api/routes_v1');
+var routes_v2 = require('./api/routes_v2');
 
-function onRequest(request, response){
-	console.log('er was een request');
-	response.writeHead(200,{'Content-Type': 'application/json'});
+var app = express();
 
-	var json = JSON.stringify({ 
-		mijntekst: 'Hello World!',
-		label: "Nog meer tekst",
-		mijnarray: [ "tekst", "nog meer tekst", 2 ],
-		mijnobject: {
-			mijnlabel: 'mijntekst',
-			getal: 4
-		}
-	});
+app.use('/api/v1', routes_v1);
+app.use('/api/v2', routes_v2);
 
-	response.write(json);
-	response.end();
-}
+app.listen(process.env.PORT || 3000, function(){
+	console.log('De server luistert op port 3000');	
+});
 
-http.createServer(onRequest).listen(process.env.PORT || 3000);
-
-console.log('De server luistert op port 3000');
+module.exports = app;
