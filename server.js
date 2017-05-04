@@ -1,3 +1,4 @@
+// dit is mijn server
 var http = require('http');
 
 function onRequest(request, response){
